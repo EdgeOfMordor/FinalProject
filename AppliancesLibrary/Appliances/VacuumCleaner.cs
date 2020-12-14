@@ -42,7 +42,7 @@ namespace AppliancesLibrary.Appliances
         /// <param name="power">Power of vacuum cleaner.</param>
         /// <param name="colorScheme">Color Scheme of vacuum cleaner.</param>
 
-        public VacuumCleaner(string name, string manufacturer, double price, string colorScheme, int power) : base(name, manufacturer, price)
+        public VacuumCleaner(string name, string manufacturer, double price, string colorScheme, int power)
         {
             #region Check data
             if (string.IsNullOrWhiteSpace(name))

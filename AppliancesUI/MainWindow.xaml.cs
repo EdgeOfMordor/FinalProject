@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppliancesLibrary;
+using AppliancesLibrary.Appliances;
 
 namespace AppliancesUI
 {
@@ -20,9 +22,16 @@ namespace AppliancesUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Appliance> appliances;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            appliances = Controller.GetData();
+            countBlock.Text = $"Number of appliances : {appliances.Count()}";
         }
     }
 }

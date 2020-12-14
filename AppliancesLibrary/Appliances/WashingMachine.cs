@@ -42,7 +42,7 @@ namespace AppliancesLibrary.Appliances
         /// <param name="price">Price of washing machine.</param>
         /// <param name="numberOfPrograms">Number of washing machine programs.</param>
         /// <param name="capacity">Capacity of washing machine.</param>
-        public WashingMachine(string name, string manufacturer, double price, int numberOfPrograms, int capacity) : base(name, manufacturer, price)
+        public WashingMachine(string name, string manufacturer, double price, int numberOfPrograms, int capacity)
         {
             #region CheckData
             if (string.IsNullOrWhiteSpace(name))

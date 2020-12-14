@@ -7,37 +7,58 @@ using AppliancesLibrary.Appliances;
 
 namespace AppliancesLibrary
 {
-    class Controller
+    public class Controller
     {
-        private List<Appliance> appliances;
-        public void AddData()
+        private static readonly List<Appliance> appliances = new List<Appliance>();
+
+        public static List<Appliance> GetData()
         {
-            string path = $"{Directory.GetCurrentDirectory()}" + "file.txt";
-            if (File.Exists(path))
+            AddData();
+            return appliances;
+        }
+
+        private static void AddData()
+        {
+            try
             {
-                List<string> lists = File.ReadAllLines(path).ToList();
-                foreach(string line in lists)
-                {
-                    if (line.ToLower().Contains("kitchen unit"))
+                string path = @"E:\file.txt";
+                //if (File.Exists(path))
+                //{
+                    List<string> lists = File.ReadAllLines(path).ToList();
+                    foreach (string line in lists)
                     {
-                        string[] entries = line.Split(',');
+                        if (line.Contains("kitchenunit"))
+                        {
+                            string[] entries = line.Split(',');
 
-                        appliances.Add(new KitchenUnit(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
-                    }
-                    if (line.ToLower().Contains("vacuum cleaner"))
-                    {
-                        string[] entries = line.Split(',');
+                            appliances.Add(new KitchenUnit(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
+                        }
+                        if (line.Contains("vacuumcleaner"))
+                        {
+                            string[] entries = line.Split(',');
 
-                        appliances.Add(new VacuumCleaner(entries[1], entries[2], Convert.ToDouble(entries[3]), entries[4], Convert.ToInt32(entries[5])));
-                    }
-                    if (line.ToLower().Contains("washing machine"))
-                    {
-                        string[] entries = line.Split(',');
+                            appliances.Add(new VacuumCleaner(entries[1], entries[2], Convert.ToDouble(entries[3]), entries[4], Convert.ToInt32(entries[5])));
+                        }
+                        if (line.ToLower().Contains("washingmachine"))
+                        {
+                            string[] entries = line.Split(',');
 
-                        appliances.Add(new WashingMachine(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
+                            appliances.Add(new WashingMachine(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
+                        }
                     }
-                }
+                //}
+                //else throw new FileNotFoundException($"There is no file with path {path}");
+                
             }
+            catch (FileNotFoundException ex)
+            {
+                //TODO:Logging
+            }
+            catch (Exception ex)
+            {
+                //TODO:Logging
+            }
+
         }
     }
 }

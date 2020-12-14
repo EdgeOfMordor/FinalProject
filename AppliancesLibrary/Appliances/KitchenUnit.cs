@@ -41,7 +41,7 @@ namespace AppliancesLibrary.Appliances
         /// <param name="price">Price of kithcen unit.</param>
         /// <param name="power">Power of kitchen unit.</param>
         /// <param name="numberOfPrograms">Number of kitchen unit programs.</param>
-        public KitchenUnit(string name, string manufacturer, double price, int power, int numberOfPrograms) : base(name, manufacturer, price)
+        public KitchenUnit(string name, string manufacturer, double price, int power, int numberOfPrograms)
         {
             #region Check data
             if (string.IsNullOrWhiteSpace(name))
