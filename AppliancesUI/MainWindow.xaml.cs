@@ -22,7 +22,7 @@ namespace AppliancesUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Appliance> appliances;
+        List<Appliance> appliances = new List<Appliance>();
         public MainWindow()
         {
             InitializeComponent();
