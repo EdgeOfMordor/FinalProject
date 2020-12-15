@@ -6,10 +6,12 @@ using System.Linq;
 using AppliancesLibrary.Appliances;
 using System.Runtime.Serialization.Json;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace AppliancesLibrary
 {
     public static class Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// Add Data to the list of appliances.
         /// </summary>
@@ -43,6 +45,7 @@ namespace AppliancesLibrary
 
                             appliances.Add(new WashingMachine(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
                         }
+                        log.Info("Object successfuly created");
                     }
                 }
                 else throw new FileNotFoundException($"There is no file with path {path}");
@@ -50,15 +53,15 @@ namespace AppliancesLibrary
             }
             catch (FileNotFoundException ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             catch (FileLoadException ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             catch (Exception ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             return appliances;
 
@@ -86,20 +89,20 @@ namespace AppliancesLibrary
                     sw.WriteLine($"******************************");
                     sw.WriteLine($"Number of appliances : {counter}");
                     sw.WriteLine($"Cost of items on the list : {GetCost(appliances)}");
-                    //log.Debug("Data is saved!");
+                    log.Info("Data is saved!");
                 }
             }
             catch (FileNotFoundException ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             catch (FileLoadException ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             catch (Exception ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
 
         }
@@ -127,6 +130,7 @@ namespace AppliancesLibrary
         public static List<Appliance> Sort(List<Appliance> appliances)
         {
             appliances.Sort();
+            log.Info("List is sorted!");
             return appliances;
         }
 
@@ -163,10 +167,11 @@ namespace AppliancesLibrary
                 {
                     jsonFormatter.WriteObject(file, appliances);
                 }
+                log.Info("Data is serealized");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
         }
 
@@ -184,14 +189,15 @@ namespace AppliancesLibrary
                 {
                     newAppliances = (List<Appliance>)jsonFormatter.ReadObject(file);
                 }
+                log.Info("Data is deserialized!");
             }
             catch (FileNotFoundException ex)
             {
-                //TODO:Logging
+                log.Error(ex.Message);
             }
             catch (Exception ex)
             {
-                //TODO: Logging
+                log.Error(ex.Message);
             }
             return newAppliances;
         }
