@@ -63,12 +63,12 @@ namespace AppliancesLibrary
             return appliances;
 
         }
+
         /// <summary>
         /// Saves data to the txt file.
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <param name="path">Path of the file.</param>
-
         public static void SaveData(List<Appliance> appliances, string path)
         {
             try
@@ -103,12 +103,12 @@ namespace AppliancesLibrary
             }
 
         }
+
         /// <summary>
         /// Gets cost of all appliances on the list.
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <returns></returns>
-
         private static double GetCost(List<Appliance> appliances)
         {
             double value = 0;
@@ -149,14 +149,51 @@ namespace AppliancesLibrary
             return brandApp;
         }
 
+        /// <summary>
+        /// Serializes list of appliances.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
         public static void SerializeData(List<Appliance> appliances)
         {
             var jsonFormatter = new DataContractJsonSerializer(typeof(List<Appliance>));
 
-            using (var file = new FileStream("appliances.json", FileMode.OpenOrCreate))
+            try
             {
-                jsonFormatter.WriteObject(file, appliances);
+                using (var file = new FileStream("appliances.json", FileMode.OpenOrCreate))
+                {
+                    jsonFormatter.WriteObject(file, appliances);
+                }
             }
+            catch (Exception)
+            {
+                //TODO:Logging
+            }
+        }
+
+        /// <summary>
+        /// Deserialize list of appliances.
+        /// </summary>
+        /// <returns>List of appliances.</returns>
+        public static List<Appliance> DeserializeData()
+        {
+            var jsonFormatter = new DataContractJsonSerializer(typeof(List<Appliance>));
+            List<Appliance> newAppliances = new List<Appliance>();
+            try
+            {
+                using (var file = new FileStream("appliances.json", FileMode.OpenOrCreate))
+                {
+                    newAppliances = (List<Appliance>)jsonFormatter.ReadObject(file);
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                //TODO:Logging
+            }
+            catch (Exception ex)
+            {
+                //TODO: Logging
+            }
+            return newAppliances;
         }
 
     }

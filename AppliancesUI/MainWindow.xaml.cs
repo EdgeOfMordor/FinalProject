@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,10 @@ namespace AppliancesUI
         public MainWindow()
         {
             InitializeComponent();
+            if (File.Exists($@"{Directory.GetCurrentDirectory()}\appliances.json"))
+            {
+                uploadDataButton.IsEnabled = true;
+            }
         }
 
         private void AddDataButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +49,7 @@ namespace AppliancesUI
         {
             appliances = Controller.Sort(appliances);
             Controller.SaveData(appliances, @"E:\appliances_new.txt");
+            Controller.SerializeData(appliances);
             MessageBox.Show("Done!");
         }
 
@@ -55,6 +61,11 @@ namespace AppliancesUI
                 Controller.SaveData(Controller.FindApplianceByManufacturer(appliances, manufacturerTextBox.Text), $@"E:\{manufacturerTextBox.Text}.txt");
                 MessageBox.Show("Done!");
             }
+        }
+
+        private void uploadDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            appliances.AddRange(Controller.DeserializeData());
         }
     }
 }

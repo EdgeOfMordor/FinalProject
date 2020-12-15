@@ -27,8 +27,8 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="uploadDataButton" Content="Завантажит збережені дані"
-                Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="10"/>
+        <Button x:Name="uploadDataButton" Content="Завантажити попередні дані"
+                Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" IsEnabled="False" Click="uploadDataButton_Click"/>
         <Button x:Name="addDataButton" Content="Додати пристрої"
                 Grid.Column="1" Grid.Row="2" Margin="10" Click="AddDataButton_Click"/>
         <Button x:Name="saveButton" Content="Зберегти зміни"
