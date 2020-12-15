@@ -1,24 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AppliancesLibrary.Appliances
 {
     [Serializable]
+    [KnownType(typeof(KitchenUnit))]
+    [KnownType(typeof(WashingMachine))]
+    [KnownType(typeof(VacuumCleaner))]
     public abstract class Appliance : IComparable
     {
         #region Properties
         /// <summary>
         /// Name of appliance.
         /// </summary>
+        [DataMember]
         public abstract string Name { get; set; }
         /// <summary>
         /// Manufacturer of appliance.
         /// </summary>
+        [DataMember]
         public abstract string Manufacturer { get; set; }
         /// <summary>
         /// Price of appliance.
         /// </summary>
+        [DataMember]
         public abstract double Price { get; set; }
         #endregion
 

@@ -66,6 +66,8 @@ namespace AppliancesUI
         private void uploadDataButton_Click(object sender, RoutedEventArgs e)
         {
             appliances.AddRange(Controller.DeserializeData());
+            countBlock.Text = $"Number of appliances : {appliances.Count()}";
+            uploadDataButton.IsEnabled = false;
         }
     }
 }

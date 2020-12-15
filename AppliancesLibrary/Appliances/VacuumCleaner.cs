@@ -1,31 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AppliancesLibrary.Appliances
 {
+    [Serializable]
     public class VacuumCleaner : Appliance
     {
         #region Properties
         /// <summary>
         /// Name of vacuum cleaner.
         /// </summary>
+        [DataMember]
         public override string Name { get; set; }
         /// <summary>
         /// Manufacturer of vacuum cleaner.
         /// </summary>
+        [DataMember]
         public override string Manufacturer { get; set; }
         /// <summary>
         /// Price of vacuum cleaner.
         /// </summary>
+        [DataMember]
         public override double Price { get; set; }
         /// <summary>
         /// Power of vaccum cleaner.
         /// </summary>
+        [DataMember]
         public int Power { get; set; }
         /// <summary>
         /// Color scheme of vacuum cleaner.
         /// </summary>
+        [DataMember]
         public string ColorScheme { get; set; }
         #endregion
 

@@ -1,31 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AppliancesLibrary.Appliances
 {
+    [Serializable]
     public class WashingMachine : Appliance
     {
         #region Properties
         /// <summary>
         /// Name of washing machine.
         /// </summary>
+        [DataMember]
         public override string Name { get; set; }
         /// <summary>
         /// Manufacturer of washing machine.
         /// </summary>
+        [DataMember]
         public override string Manufacturer { get; set; }
         /// <summary>
         /// Price of washing machine.
         /// </summary>
+        [DataMember]
         public override double Price { get; set; }
         /// <summary>
         /// Number of washing machine programs
         /// </summary>
+        [DataMember]
         public int NumberOfPrograms { get; set; }
         /// <summary>
         /// Capacity of washing machine.
         /// </summary>
+        [DataMember]
         public int Capacity { get; set; }
         #endregion
 
