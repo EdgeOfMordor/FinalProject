@@ -9,11 +9,10 @@ namespace AppliancesLibrary
 {
     public static class Controller
     {
-        public static List<Appliance> AddData(List<Appliance> appliances)
+        public static List<Appliance> AddData(List<Appliance> appliances, string path)
         {
             try
             {
-                string path = @"E:\file.txt";
                 if (File.Exists(path))
                 {
                     List<string> lists = File.ReadAllLines(path).ToList();

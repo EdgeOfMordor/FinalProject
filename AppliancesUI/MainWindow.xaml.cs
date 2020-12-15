@@ -30,7 +30,7 @@ namespace AppliancesUI
 
         private void AddDataButton_Click(object sender, RoutedEventArgs e)
         {
-            appliances = Controller.AddData(appliances);
+            appliances = Controller.AddData(appliances, @"E:\file.txt");
             countBlock.Text = $"Number of appliances : {appliances.Count()}";
         }
 
