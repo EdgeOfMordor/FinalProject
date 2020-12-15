@@ -9,6 +9,12 @@ namespace AppliancesLibrary
 {
     public static class Controller
     {
+        /// <summary>
+        /// Add Data to the list of appliances.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
+        /// <param name="path">Path of the file.</param>
+        /// <returns></returns>
         public static List<Appliance> AddData(List<Appliance> appliances, string path)
         {
             try
@@ -56,6 +62,11 @@ namespace AppliancesLibrary
             return appliances;
 
         }
+        /// <summary>
+        /// Saves data to the txt file.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
+        /// <param name="path">Path of the file.</param>
 
         public static void SaveData(List<Appliance> appliances, string path)
         {
@@ -73,6 +84,7 @@ namespace AppliancesLibrary
                     }
                     sw.WriteLine($"******************************");
                     sw.WriteLine($"Number of appliances : {counter}");
+                    sw.WriteLine($"Cost of items on the list : {GetCost(appliances)}");
                     //log.Debug("Data is saved!");
                 }
             }
@@ -90,33 +102,50 @@ namespace AppliancesLibrary
             }
 
         }
+        /// <summary>
+        /// Gets cost of all appliances on the list.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
+        /// <returns></returns>
 
+        private static double GetCost(List<Appliance> appliances)
+        {
+            double value = 0;
+            foreach (var a in appliances)
+            {
+                value += a.Price;
+            }
+            return value;
+        }
+
+        /// <summary>
+        /// Sorts list of appliances.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
+        /// <returns></returns>
         public static List<Appliance> Sort(List<Appliance> appliances)
         {
             appliances.Sort();
             return appliances;
         }
 
+        /// <summary>
+        /// Finds every appliance of certain manufacturer.
+        /// </summary>
+        /// <param name="appliances">List of appliances.</param>
+        /// <param name="manufacturer">Manufacturer of appliances.</param>
+        /// <returns></returns>
         public static List<Appliance> FindApplianceByManufacturer(List<Appliance> appliances, string manufacturer)
         {
             List<Appliance> brandApp = new List<Appliance>();
             foreach(var a in appliances)
             {
-                if (manufacturer.ToLower().Equals(a.Manufacturer))
+                if (manufacturer.ToLower().Equals(a.Manufacturer.ToLower()))
                 {
                     brandApp.Add(a);
                 }
             }
             return brandApp;
-        }
-        public static double GetCost(List<Appliance> appliances)
-        {
-            double value = 0;
-            foreach(var a in appliances)
-            {
-                value += a.Price;
-            }
-            return value;
         }
 
     }

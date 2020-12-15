@@ -39,5 +39,10 @@ namespace AppliancesUI
             appliances = Controller.Sort(appliances);
             Controller.SaveData(appliances, @"E:\appliances_new.txt");
         }
+
+        private void ApplianceByManufacturerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Controller.SaveData(Controller.FindApplianceByManufacturer(appliances, manufacturerTextBox.Text), $@"E:\{manufacturerTextBox.Text}.txt");
+        }
     }
 }
