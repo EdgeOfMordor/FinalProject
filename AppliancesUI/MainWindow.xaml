@@ -32,11 +32,11 @@
         <Button x:Name="addDataButton" Content="Додати пристрої"
                 Grid.Column="1" Grid.Row="2" Margin="10" Click="AddDataButton_Click"/>
         <Button x:Name="saveButton" Content="Зберегти зміни"
-                Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="10" Click="SaveButton_Click"/>
-        <Button x:Name="ApplianceByManufacturerButton" Content="Знайти всі прилади виробника"
-                Grid.Column="1" Grid.Row="4" Margin="10" Click="ApplianceByManufacturerButton_Click"/>
+                Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="10"  IsEnabled="False" Click="SaveButton_Click"/>
+        <Button x:Name="applianceByManufacturerButton"  Content="Знайти всі прилади виробника"
+                Grid.Column="1" Grid.Row="4" Margin="10" Visibility="Hidden" IsEnabled="False" Click="ApplianceByManufacturerButton_Click"/>
         
-        <TextBox x:Name="manufacturerTextBox" Grid.Column="3" Grid.Row="4" Margin="10"/>
+        <TextBox x:Name="manufacturerTextBox" Grid.Column="3" Grid.Row="4" Margin="10" Visibility="Hidden" IsEnabled="False" />
         
         <TextBlock x:Name="countBlock" Text="Number of appliances : 0" Grid.Column="3" Grid.Row="2" Margin="10"/>
     </Grid>

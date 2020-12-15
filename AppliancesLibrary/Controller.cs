@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 using AppliancesLibrary.Appliances;
+using System.Runtime.Serialization.Json;
 
 namespace AppliancesLibrary
 {
@@ -146,6 +147,16 @@ namespace AppliancesLibrary
                 }
             }
             return brandApp;
+        }
+
+        public static void SerializeData(List<Appliance> appliances)
+        {
+            var jsonFormatter = new DataContractJsonSerializer(typeof(List<Appliance>));
+
+            using (var file = new FileStream("appliances.json", FileMode.OpenOrCreate))
+            {
+                jsonFormatter.WriteObject(file, appliances);
+            }
         }
 
     }

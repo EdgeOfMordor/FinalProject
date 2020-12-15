@@ -30,6 +30,12 @@ namespace AppliancesUI
 
         private void AddDataButton_Click(object sender, RoutedEventArgs e)
         {
+            saveButton.IsEnabled = true;
+            applianceByManufacturerButton.IsEnabled = true;
+            applianceByManufacturerButton.Visibility = Visibility.Visible;
+            manufacturerTextBox.IsEnabled = true;
+            manufacturerTextBox.Visibility = Visibility.Visible;
+            addDataButton.IsEnabled = false;
             appliances = Controller.AddData(appliances, @"E:\file.txt");
             countBlock.Text = $"Number of appliances : {appliances.Count()}";
         }
@@ -38,11 +44,17 @@ namespace AppliancesUI
         {
             appliances = Controller.Sort(appliances);
             Controller.SaveData(appliances, @"E:\appliances_new.txt");
+            MessageBox.Show("Done!");
         }
 
         private void ApplianceByManufacturerButton_Click(object sender, RoutedEventArgs e)
         {
-            Controller.SaveData(Controller.FindApplianceByManufacturer(appliances, manufacturerTextBox.Text), $@"E:\{manufacturerTextBox.Text}.txt");
+            if (String.IsNullOrEmpty(manufacturerTextBox.Text)) MessageBox.Show("Enter name of manufacturer");
+            else
+            {
+                Controller.SaveData(Controller.FindApplianceByManufacturer(appliances, manufacturerTextBox.Text), $@"E:\{manufacturerTextBox.Text}.txt");
+                MessageBox.Show("Done!");
+            }
         }
     }
 }
