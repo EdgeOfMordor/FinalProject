@@ -5,7 +5,7 @@ using System.Text;
 namespace AppliancesLibrary.Appliances
 {
     [Serializable]
-    public abstract class Appliance
+    public abstract class Appliance : IComparable
     {
         #region Properties
         /// <summary>
@@ -58,6 +58,18 @@ namespace AppliancesLibrary.Appliances
         public override string ToString()
         {
             return $"{Name},{Manufacturer},{Price}$";
+        }
+
+        public virtual int CompareTo(object o)
+        {
+            if (o is Appliance a)
+            {
+                return this.Name.CompareTo(a.Name);
+            }
+            else
+            {
+                throw new Exception("An error has occured while sorting");
+            }
         }
     }
 }

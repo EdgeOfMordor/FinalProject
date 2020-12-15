@@ -9,15 +9,7 @@ namespace AppliancesLibrary
 {
     public static class Controller
     {
-        private static readonly List<Appliance> appliances = new List<Appliance>();
-
-        public static List<Appliance> GetData()
-        {
-            AddData();
-            return appliances;
-        }
-
-        private static void AddData()
+        public static List<Appliance> AddData(List<Appliance> appliances)
         {
             try
             {
@@ -54,11 +46,79 @@ namespace AppliancesLibrary
             {
                 //TODO:Logging
             }
+            catch (FileLoadException ex)
+            {
+                //TODO:Logging
+            }
+            catch (Exception ex)
+            {
+                //TODO:Logging
+            }
+            return appliances;
+
+        }
+
+        public static void SaveData(List<Appliance> appliances, string path)
+        {
+            try
+            {
+                using (var sw = new StreamWriter(path, false, Encoding.Default))
+                {
+                    sw.WriteLine($"**********Appliances**********");
+                    int counter = 0;
+                    foreach (var a in appliances)
+                    {
+                        sw.WriteLine(a.ToString());
+                        sw.WriteLine();
+                        counter++;
+                    }
+                    sw.WriteLine($"******************************");
+                    sw.WriteLine($"Number of appliances : {counter}");
+                    //log.Debug("Data is saved!");
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                //TODO:Logging
+            }
+            catch (FileLoadException ex)
+            {
+                //TODO:Logging
+            }
             catch (Exception ex)
             {
                 //TODO:Logging
             }
 
         }
+
+        public static List<Appliance> Sort(List<Appliance> appliances)
+        {
+            appliances.Sort();
+            return appliances;
+        }
+
+        public static List<Appliance> FindApplianceByManufacturer(List<Appliance> appliances, string manufacturer)
+        {
+            List<Appliance> brandApp = new List<Appliance>();
+            foreach(var a in appliances)
+            {
+                if (manufacturer.ToLower().Equals(a.Manufacturer))
+                {
+                    brandApp.Add(a);
+                }
+            }
+            return brandApp;
+        }
+        public static double GetCost(List<Appliance> appliances)
+        {
+            double value = 0;
+            foreach(var a in appliances)
+            {
+                value += a.Price;
+            }
+            return value;
+        }
+
     }
 }

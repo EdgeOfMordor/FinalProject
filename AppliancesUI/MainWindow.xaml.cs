@@ -30,8 +30,14 @@ namespace AppliancesUI
 
         private void AddDataButton_Click(object sender, RoutedEventArgs e)
         {
-            appliances = Controller.GetData();
+            appliances = Controller.AddData(appliances);
             countBlock.Text = $"Number of appliances : {appliances.Count()}";
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            appliances = Controller.Sort(appliances);
+            Controller.SaveData(appliances, @"E:\appliances_new.txt");
         }
     }
 }
