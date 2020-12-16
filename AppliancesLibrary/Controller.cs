@@ -27,13 +27,13 @@ namespace AppliancesLibrary
                     List<string> lists = File.ReadAllLines(path).ToList();
                     foreach (string line in lists)
                     {
-                        if (line.Contains("kitchen unit"))
+                        if (line.ToLower().Contains("kitchen unit"))
                         {
                             string[] entries = line.Split(',');
 
                             appliances.Add(new KitchenUnit(entries[1], entries[2], Convert.ToDouble(entries[3]), Convert.ToInt32(entries[4]), Convert.ToInt32(entries[5])));
                         }
-                        if (line.Contains("vacuum cleaner"))
+                        if (line.ToLower().Contains("vacuum cleaner"))
                         {
                             string[] entries = line.Split(',');
 

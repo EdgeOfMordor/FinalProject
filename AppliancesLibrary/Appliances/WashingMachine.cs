@@ -82,7 +82,7 @@ namespace AppliancesLibrary.Appliances
         }
         public override string ToString()
         {
-            return $"{Name}, {Manufacturer}, {Price}$, {NumberOfPrograms} programs, {Capacity}L";
+            return $"Washing machine :{Name}, Made by {Manufacturer}, Its price {Price}$, It has {NumberOfPrograms} programs, Capacity: {Capacity}L";
         }
     }
 }

@@ -82,7 +82,7 @@ namespace AppliancesLibrary.Appliances
         }
         public override string ToString()
         {
-            return $"{Name}, {Manufacturer}, {Price}$, {ColorScheme}, {Power}W";
+            return $"Vacuum cleaner: {Name}, Made by {Manufacturer}, Its price {Price}$, Color scheme {ColorScheme}, Power: {Power}W";
         }
     }
 }

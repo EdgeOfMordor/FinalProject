@@ -64,7 +64,7 @@ namespace AppliancesLibrary.Appliances
 
         public override string ToString()
         {
-            return $"{Name},{Manufacturer},{Price}$";
+            return $"Appliance: {Name}, Made by {Manufacturer},Its price: {Price}$";
         }
 
         public virtual int CompareTo(object o)

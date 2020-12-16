@@ -81,7 +81,7 @@ namespace AppliancesLibrary.Appliances
         }
         public override string ToString()
         {
-            return $"{Name},{Manufacturer},{Price}$,{Power}W,{NumberOfPrograms} programs";
+            return $"Kitchen unit: {Name},Made by {Manufacturer}, Its price {Price}$, Power: {Power}W, It has {NumberOfPrograms} programs";
         }
     }
 }
