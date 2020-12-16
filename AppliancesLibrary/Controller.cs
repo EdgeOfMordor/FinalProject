@@ -112,7 +112,7 @@ namespace AppliancesLibrary
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <returns></returns>
-        private static double GetCost(List<Appliance> appliances)
+        public static double GetCost(List<Appliance> appliances)
         {
             double value = 0;
             foreach (var a in appliances)
