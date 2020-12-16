@@ -1,31 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AppliancesLibrary.Appliances
 {
+    [Serializable]
     public class KitchenUnit : Appliance
     {
         #region Properties
         /// <summary>
         /// Name of kitchen unit.
         /// </summary>
+        [DataMember]
         public override string Name { get; set; }
         /// <summary>
         /// Manufacturer of kitchen unit.
         /// </summary>
+        [DataMember]
         public override string Manufacturer { get; set; }
         /// <summary>
         /// Price of kitchen unit.
         /// </summary>
+        [DataMember]
         public override double Price { get; set; }
         /// <summary>
         /// Power of kitchen unit.
         /// </summary>
+        [DataMember]
         public int Power { get; set; }
         /// <summary>
         /// Number of kitchen unit programs.
         /// </summary>
+        [DataMember]
         public int NumberOfPrograms { get; set; }
         #endregion
 
@@ -74,7 +81,7 @@ namespace AppliancesLibrary.Appliances
         }
         public override string ToString()
         {
-            return $"{Name},{Manufacturer},{Price}$,{Power}W,{NumberOfPrograms} programs";
+            return $"Kitchen unit: {Name},Made by {Manufacturer}, Its price {Price}$, Power: {Power}W, It has {NumberOfPrograms} programs";
         }
     }
 }

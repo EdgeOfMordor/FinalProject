@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppliancesUI", "AppliancesUI\AppliancesUI.csproj", "{8A266397-979D-4145-998E-0F5591AB2220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppliancesLibrary", "AppliancesLibrary\AppliancesLibrary.csproj", "{D2D20017-54A3-4E48-A510-EA769A371EFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppliancesLibrary", "AppliancesLibrary\AppliancesLibrary.csproj", "{D2D20017-54A3-4E48-A510-EA769A371EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appliances.Tests", "Appliances.Tests\Appliances.Tests.csproj", "{753E64D7-01E4-47F9-872D-13B6E66A2BCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D2D20017-54A3-4E48-A510-EA769A371EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2D20017-54A3-4E48-A510-EA769A371EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2D20017-54A3-4E48-A510-EA769A371EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753E64D7-01E4-47F9-872D-13B6E66A2BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753E64D7-01E4-47F9-872D-13B6E66A2BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753E64D7-01E4-47F9-872D-13B6E66A2BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753E64D7-01E4-47F9-872D-13B6E66A2BCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

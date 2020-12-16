@@ -1,24 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AppliancesLibrary.Appliances
 {
     [Serializable]
-    public abstract class Appliance
+    [KnownType(typeof(KitchenUnit))]
+    [KnownType(typeof(WashingMachine))]
+    [KnownType(typeof(VacuumCleaner))]
+    public abstract class Appliance : IComparable
     {
         #region Properties
         /// <summary>
         /// Name of appliance.
         /// </summary>
+        [DataMember]
         public abstract string Name { get; set; }
         /// <summary>
         /// Manufacturer of appliance.
         /// </summary>
+        [DataMember]
         public abstract string Manufacturer { get; set; }
         /// <summary>
         /// Price of appliance.
         /// </summary>
+        [DataMember]
         public abstract double Price { get; set; }
         #endregion
 
@@ -57,7 +64,19 @@ namespace AppliancesLibrary.Appliances
 
         public override string ToString()
         {
-            return $"{Name},{Manufacturer},{Price}$";
+            return $"Appliance: {Name}, Made by {Manufacturer},Its price: {Price}$";
+        }
+
+        public virtual int CompareTo(object o)
+        {
+            if (o is Appliance a)
+            {
+                return this.Name.CompareTo(a.Name);
+            }
+            else
+            {
+                throw new Exception("An error has occured while sorting");
+            }
         }
     }
 }
