@@ -13,7 +13,7 @@ namespace AppliancesLibrary
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
-        /// Add Data to the list of appliances.
+        /// Add Data to the list of appliances from txt file.
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <param name="path">Path of the file.</param>
@@ -123,7 +123,7 @@ namespace AppliancesLibrary
         }
 
         /// <summary>
-        /// Sorts list of appliances.
+        /// Sorts list of appliances by name.
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <returns></returns>
@@ -135,7 +135,7 @@ namespace AppliancesLibrary
         }
 
         /// <summary>
-        /// Finds every appliance of certain manufacturer.
+        /// Finds every appliance of certain manufacturer and adds it to the new list.
         /// </summary>
         /// <param name="appliances">List of appliances.</param>
         /// <param name="manufacturer">Manufacturer of appliances.</param>

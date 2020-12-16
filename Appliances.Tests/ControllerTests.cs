@@ -31,6 +31,59 @@ namespace Appliances.Tests
         }
 
         [TestMethod]
+        public void Sort_ArabikaAndSomethingAndLG_ArabikaReturned()
+        {
+            //Arrange
+            KitchenUnit kitchenUnitToTest = new KitchenUnit("Arabika", "Something", 1600, 1000, 12);
+            WashingMachine washingMachineToTest = new WashingMachine("Something", "Arabika", 700, 12, 6);
+            VacuumCleaner vacuumCleanerToTest = new VacuumCleaner("LG", "Samsung", 1500, "Blue", 1600);
+            List<Appliance> expectedList = new List<Appliance>
+            {
+                kitchenUnitToTest,
+                vacuumCleanerToTest,
+                washingMachineToTest,
+            };
+
+            //Act
+            List<Appliance> actualList = new List<Appliance>
+            {
+                washingMachineToTest,
+                vacuumCleanerToTest,
+                kitchenUnitToTest
+            };
+            Controller.Sort(actualList);
+
+            //Assert
+            Assert.AreEqual(expectedList.ElementAt(0).Name, actualList.ElementAt(0).Name);
+        }
+        [TestMethod]
+        public void Sort_ArabikaAndSomethingAndLG_LGReturned()
+        {
+            //Arrange
+            KitchenUnit kitchenUnitToTest = new KitchenUnit("Arabika", "Something", 1600, 1000, 12);
+            WashingMachine washingMachineToTest = new WashingMachine("Something", "Arabika", 700, 12, 6);
+            VacuumCleaner vacuumCleanerToTest = new VacuumCleaner("LG", "Samsung", 1500, "Blue", 1600);
+            List<Appliance> expectedList = new List<Appliance>
+            {
+                kitchenUnitToTest,
+                vacuumCleanerToTest,
+                washingMachineToTest,
+            };
+
+            //Act
+            List<Appliance> actualList = new List<Appliance>
+            {
+                washingMachineToTest,
+                vacuumCleanerToTest,
+                kitchenUnitToTest
+            };
+            Controller.Sort(actualList);
+
+            //Assert
+            Assert.AreEqual(expectedList.ElementAt(1).Name, actualList.ElementAt(1).Name);
+        }
+
+        [TestMethod]
         public void FindApplianceByManufacturer_ArabikaAndSomethingAndSamsung_1Returned()
         {
             //Arrange
